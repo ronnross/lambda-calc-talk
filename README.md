@@ -31,7 +31,7 @@ A lambda term
 It consist of a head `λa` and a body `a+1`.
 A variable named in the head is the parameter and binds to instances of that var in the body. `a` is said to be bound. Body always returns.
 
-`a` is not semantically meaningful except in its role in that this single expression.
+`a` is not semantically meaningful except in its role in that this single expression. This is called *alpha equivalence*
 
 
 ## Practice
