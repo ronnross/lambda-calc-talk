@@ -31,10 +31,59 @@ A lambda term
 It consist of a head `λa` and a body `a+1`.
 A variable named in the head is the parameter and binds to instances of that var in the body. `a` is said to be bound. Body always returns.
 
-`a` is not semantically meaningful except in its role in that this single expression. This is called *alpha equivalence*
+`a` is not semantically meaningful except in its role in that this single expression. This is called *alpha equivalence* so
+```js
+λx.x
+λd.d
+λz.z
+```
+
+## Practice Beta Reduction
+We attempt to reduce/evaluated all expressions. This is called Beta Reduction. We can apply this abstraction `λx.x` to a value `2`
+
+```js
+(λa.a) 2
+ λ2.2 // we can eliminate the head
+    2 // function applied
 
 
-## Practice
-We attempt to reduce/evaluated all expressions. This is called Beta Reduction.
+(λx.x+1) 2
+ λ2.2+1
+    2+1
+      3
+
+
+(λx.x)(λx.x)
+       λx.x // normal form, not fully reduced. We are reduced when there are not more heads.
+
+
+(λx.x)(λy.y)
+[x := (λy.y)]
+       λy.y
+
+
+((λx.x)(λy.y)) z
+  [x := (λy.y)]
+       (λy.y) z
+      [y := z]
+             z
+```
+
+### free variables
+```js
+λx.xy //y remains irreducible
+```
+`y` is a free variable
+```js
+(λx.xy)z
+(λ[x := z].xy)z
+             zy
+```
+
+## multiple arguments
+```js
+λxy.xy
+λx.(λy.xy) // Schönfinkel / curry
+```
 
 
