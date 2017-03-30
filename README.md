@@ -86,4 +86,9 @@ We attempt to reduce/evaluated all expressions. This is called Beta Reduction. W
 λx.(λy.xy) // Schönfinkel / curry
 ```
 
-
+## Divergence problem
+```js
+(λx.x x)(λy.y y)
+[x := λy.y y] x x
+(λy.y y)(λy.y y)
+```
